@@ -22,6 +22,6 @@ The purpose of this challange was to create a database using NoSQL.
 
 ## Links
 
-[Video]()
+[Video](https://drive.google.com/file/d/1PySiAdRtBKw2_JX13DD_NaWw3jGUKDAl/view?usp=sharing)
 
 [GitHub](https://github.com/Bryson987081/social-api-challenge)

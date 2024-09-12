@@ -14,7 +14,7 @@ router.route('/')
     .get(getThoughts)
     .post(createThought);
 
-router.route('/:thoughId')
+router.route('/:thoughtId')
 .get(getSingleThought)
 .put(updateThought)
 .delete(deleteThought);
