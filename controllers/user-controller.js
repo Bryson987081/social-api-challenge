@@ -26,6 +26,9 @@ module.exports = {
     async createUser(req, res) {
         try {
             const dbUserData = await User.create(req.body);
+            if (!dbUserData) {
+                return res.status(404).json({ message: 'Could not create user' });
+            }
             res.json(dbUserData);
         } catch (err) {
             res.status(500).json(err);
@@ -34,6 +37,9 @@ module.exports = {
     async updateUser(req, res) {
         try {
             const updatedUser = await User.findOneAndUpdate(req.params.id, req.body, { new: true });
+            if (!updatedUser) {
+                return res.status(404).json({ message: 'Could not update user' });
+            }
             res.json(updatedUser);
         } catch (err) {
             res.status(500).json(err);
@@ -42,6 +48,9 @@ module.exports = {
     async deleteUser(req, res) {
         try {
             const deletedUser = await User.findOneAndDelete(req.params.id);
+            if (!deletedUser) {
+                return res.status(404).json({ message: 'Could not delete user' });
+            }
             res.json(deletedUser);
         } catch (err) {
             res.status(500).json(err);
@@ -53,6 +62,9 @@ module.exports = {
                 { $addToSet: { friends: req.body.friendId || req.params.friendId } },
                 { new: true }
             )
+            if (!friend) {
+                return res.status(404).json({ message: 'Could not add friend to users friends list' });
+            }
             res.json(friend);
         } catch (err) {
             res.status(500).json(err);
@@ -64,6 +76,9 @@ module.exports = {
                 { $pull: { friends: req.params.friendId } },
                 { new: true }
             )
+            if (!deletedFriend) {
+                return res.status(404).json({ message: 'Could not delete friend from users friends list' });
+            }
             res.json(deletedFriend);
         } catch (err) {
             res.status(500).json(err);
