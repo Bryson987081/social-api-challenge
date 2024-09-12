@@ -17,9 +17,6 @@ The purpose of this challange was to create a database using NoSQL.
    And the user can create and delete reactions to thoughts and add or remove friends to a users friend list.
    
 
-## Screenshots
-
-
 ## Links
 
 [Video](https://drive.google.com/file/d/1PySiAdRtBKw2_JX13DD_NaWw3jGUKDAl/view?usp=sharing)
