@@ -45,7 +45,7 @@ module.exports = {
     async createThoughtReaction(req, res) {
         try {
             const newReaction = await Thought.findOneAndUpdate({ _id: req.params.thoughtId },
-                { $addToSet: { reactions: req.body.reactionId || req.params.reactionId } },
+                { $addToSet: { reactions: req.body } },
                 { new: true }
             )
             res.json(newReaction);
@@ -55,7 +55,7 @@ module.exports = {
     },
     async deleteThoughtReaction(req, res) {
         try {
-            const deletedReaction = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $pull: { reactions: req.params.reactionId }},
+            const deletedReaction = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $pull: { reactions: { reactionId: req.params.reactionId }}},
                 {new: true }
             )
             res.json(deletedReaction);
